@@ -3,7 +3,7 @@ const Register = () => {
         <div>
         <input placeholder="Full Name"/> 
         <input placeholder="Mobile Number"/>
-        <input placeholder="Password"/>
+        <input placeholder="Password" type="password"/>
         <button>Submit</button>
         </div>
     )
