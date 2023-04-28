@@ -54,12 +54,22 @@ app.get('/', (req, res) => {
     res.send('Welcome to my UI');
 });
 
-app.post('/register', async (req,res) => {
+app.post('/register', async (req, res) => {
     // console.log(req.body)
-    const data = await Users.create(req.body)
+    const data = await Customers.create(req.body)
     res.json({
         "userList": data
     })
+
+})
+app.post('/login', async (req, res) => {
+    // console.log(req.body)
+    const data = await Customers.findOne({mobileNumber:req.body.mobileNumber, password:req.body.password})
+    if(data){
+        res.json({message: "login succcess"})
+      }else{
+        res.json({message: "login failed"})
+      }
 
 })
 
