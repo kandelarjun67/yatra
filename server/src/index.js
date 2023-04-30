@@ -74,4 +74,4 @@ app.post('/login', async (req, res) => {
 })
 
 
-app.listen(4000, () => console.log('YATRA is listening on port 4000.'));
+app.listen(8000, () => console.log('YATRA is listening on port 8000.'));
