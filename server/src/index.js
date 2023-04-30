@@ -22,7 +22,7 @@ const connectToDb = async () => {
 
     } catch (err) {
 
-        console.log(errr)
+        console.log(err)
 
     }
 
@@ -35,12 +35,14 @@ const userSchema = new mongoose.Schema({
     fullName: String,
 
     mobileNumber: Number,
+    
+    addreess:String,
 
     password: String,
 
 });
 
-const Users = mongoose.model('Users', userSchema);
+const Customers = mongoose.model('Customers', userSchema);
 
 
 console.log("connected to database")
@@ -55,7 +57,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     const data = await Customers.create(req.body)
     res.json({
         "userList": data
