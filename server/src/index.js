@@ -64,13 +64,12 @@ app.post('/register', async (req, res) => {
 })
 app.post('/login', async (req, res) => {
     // console.log(req.body)
-    const data = await Customers.findOne({mobileNumber:req.body.mobileNumber, password:req.body.password})
-    if(data){
-        res.json({message: "login succcess"})
-      }else{
-        res.json({message: "login failed"})
-      }
-
+    const data = await Customers.findOne({ mobileNumber: req.body.mobileNumber, password: req.body.password })
+    if (data) {
+        res.json({ message: "login succcess" })
+    } else {
+        res.json({ message: "login failed" })
+    }
 })
 
 
