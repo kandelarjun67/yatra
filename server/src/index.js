@@ -22,7 +22,7 @@ const connectToDb = async () => {
 
     } catch (err) {
 
-        console.log(errr)
+        console.log(err)
 
     }
 
@@ -35,6 +35,8 @@ const userSchema = new mongoose.Schema({
     fullName: String,
 
     mobileNumber: Number,
+    
+    address:String,
 
     password: String,
 
@@ -54,14 +56,32 @@ app.get('/', (req, res) => {
     res.send('Welcome to my UI');
 });
 
-app.post('/register', async (req,res) => {
-    // console.log(req.body)
+// app.post('/register', async (req, res) => {
+//     console.log(req.body)
+//     const data = await Users.create(req.body)
+//     res.json({
+//         "userList": data
+//     })
+// })
+
+// 
+app.post('/testing', async (req, res) => {
+    console.log(req.body)
     const data = await Users.create(req.body)
     res.json({
         "userList": data
     })
-
+})
+// 
+app.post('/login', async (req, res) => {
+    // console.log(req.body)
+    const data = await Users.findOne({ mobileNumber: req.body.mobileNumber, password: req.body.password })
+    if (data) {
+        res.json({ message: "login succcess" })
+    } else {
+        res.json({ message: "login failed" })
+    }
 })
 
 
-app.listen(4000, () => console.log('YATRA is listening on port 4000.'));
+app.listen(8000, () => console.log('YATRA is listening on port 8000.'));
