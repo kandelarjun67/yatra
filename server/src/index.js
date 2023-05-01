@@ -36,13 +36,13 @@ const userSchema = new mongoose.Schema({
 
     mobileNumber: Number,
     
-    addreess:String,
+    address:String,
 
     password: String,
 
 });
 
-const Customers = mongoose.model('Customers', userSchema);
+const Users = mongoose.model('Users', userSchema);
 
 
 console.log("connected to database")
@@ -56,17 +56,26 @@ app.get('/', (req, res) => {
     res.send('Welcome to my UI');
 });
 
-app.post('/register', async (req, res) => {
+// app.post('/register', async (req, res) => {
+//     console.log(req.body)
+//     const data = await Users.create(req.body)
+//     res.json({
+//         "userList": data
+//     })
+// })
+
+// 
+app.post('/testing', async (req, res) => {
     console.log(req.body)
-    const data = await Customers.create(req.body)
+    const data = await Users.create(req.body)
     res.json({
         "userList": data
     })
-
 })
+// 
 app.post('/login', async (req, res) => {
     // console.log(req.body)
-    const data = await Customers.findOne({ mobileNumber: req.body.mobileNumber, password: req.body.password })
+    const data = await Users.findOne({ mobileNumber: req.body.mobileNumber, password: req.body.password })
     if (data) {
         res.json({ message: "login succcess" })
     } else {
